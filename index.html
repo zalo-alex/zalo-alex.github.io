@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex-content">
+        <div class="flex-part">
+        </div>
+        <div class="flex-part content">
+            <div id="dec-convert" class="box">
+                <span class="title">Decimal</span>
+                <input required placeholder="123.45.67.89" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$" class="input" id="dec-ip" type="text">
+                <button class="button" onclick="convert('dec')">Calculate</button>
+            </div>
+            <div id="bin-convert" class="box">
+                <span class="title">Binary</span>
+                <input required placeholder="123.45.67.89" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$" class="input" id="bin-ip" type="text">
+                <button class="button" onclick="convert('bin')">Calculate</button>
+            </div>
+            <div id="hex-convert" class="box">
+                <span class="title">Hexadecimal</span>
+                <input required placeholder="123.45.67.89" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$" class="input" id="hex-ip" type="text">
+                <button class="button" onclick="convert('hex')">Calculate</button>
+            </div>
+        </div>
+        <footer class="flex-part">
+            <span>
+                Calcul IP by Alex Zalo
+            </span>
+            <a href="https://github.com/zalo-alex">Github</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+* {
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Cabin', sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+.clear {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("background.png");
+    background-size: cover;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.flex-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-content .flex-part {
+    height: 100%;
+}
+
+.flex-content .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.flex-content .content .box {
+    width: 20%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5em;
+    backdrop-filter: blur(5px);
+    outline: 1px solid rgba(255, 255, 255, 0);
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2em;
+    margin-inline: 2.5em;
+}
+
+.flex-content .content .box.selected { 
+    width: fit-content;
+    transform: scale(1.2);
+}
+
+.flex-content .content .box.notselected { 
+    transform: scale(0);
+    width: 0px;
+    padding: 0;
+    opacity: 0;
+    margin-inline: 0em;
+}
+
+.flex-content .content .box:hover {
+    backdrop-filter: blur(0px);
+    outline-color: rgba(255, 255, 255, 1);
+}
+
+.flex-content .content .box .result {
+    font-size: 1.25em;
+    line-height: 1.75em;
+    margin-bottom: 1em;
+}
+
+.flex-content .content .box .result-key {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.1em;
+    border-radius: 0.25em;
+}
+
+.flex-content .content .box .title {
+    font-size: 2em;
+}
+
+.flex-content .content .box .input {
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    border-radius: 0.5em;
+    font-size: 1.25em;
+}
+
+.flex-content .content .box .input:invalid + .button {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.flex-content .content .box .input:valid + .button {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.flex-content .content .box .button {
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    border-radius: 0.5em;
+    font-size: 1em;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.flex-content .content .box .button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color:rgba(0, 0, 0, 1)
+}
+
+.flex-content footer {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 1em;
+    gap: 1em;
+}
+
+.flex-content footer * {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+.flex-content footer a:hover {
+    color: rgba(255, 255, 255, 1);
+}
