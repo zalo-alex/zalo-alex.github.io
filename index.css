@@ -38,48 +38,80 @@ body.light {
 .flex-content {
     height: 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
 	background-color: rgba(0, 0, 0, 0);
 }
 
 .flex-content .flex-part {
-    height: 100%;
+    height: 50%;
 }
 
 .flex-content .content {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.flex-content .content .line-content {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
 }
 
-.flex-content .content .box {
-    width: 20%;
+.flex-content .content .line-content.hide {
+    height: 0%;
+}
+
+.flex-content .content .line-content .box {
     height: 100%;
+    width: 35%;
+    flex-direction: column;
+}
+
+.flex-content .content .line-content .box:nth-child(2) {
+    margin-inline: 5em;
+}
+
+.flex-content .content .box {
+    width: 100%;
+    height: 25%;
+
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0);
+
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
     padding: 2em;
-    margin-inline: 2.5em;
+
     transition: 0.5s;
 }
 
 .flex-content .content .box.selected { 
-    width: 50%;
+    min-width: 50%;
+    height: fit-content;
 }
 
 .flex-content .content .box.notselected { 
     width: 0px;
     padding: 0;
     opacity: 0;
-    margin-inline: 0em;
     transform: scale(0);
+}
+
+.flex-content .content .box.notselected:nth-child(2) { 
+    margin-inline: 0em;
 }
 
 .flex-content .content .box.notselected * { 
@@ -161,6 +193,12 @@ body.light {
     justify-content: center;
     align-items: end;
     padding: 1em;
+}
+
+.flex-content footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1em;
 }
 
@@ -176,7 +214,7 @@ body.light {
 .flex-content footer .theme-change {
 	border-radius: 100%;
     height: 2em;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.5);
 	outline: none;
 	border: none;
 	aspect-ratio: 1 / 1;

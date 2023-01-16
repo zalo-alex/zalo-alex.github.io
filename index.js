@@ -33,14 +33,7 @@ function getClass(ip) {
     }
 }
 
-function convert(type) {
-    boxType = type
-    var box = document.getElementById(`${type}-convert`)
-    boxInner = box.innerHTML
-    Array.prototype.slice.call(document.getElementsByClassName("box")).map(_box => _box != box ? _box.classList.add("notselected") : null)
-    box.classList.add("selected")
-    var ip = document.getElementById(`${type}-ip`).value.split(".").map(oct => parseInt(oct))
-    var _class = getClass(ip)
+function display(type, _class, ip, box, multi = false) {
     if(maskClass[_class][0] != 0) {
         var mask = maskClass[_class].map(oct => oct == 1 ? 255 : 0);
         var net_ip = maskClass[_class].map((oct, i) => oct == 1 ? ip[i] : 0)
@@ -55,7 +48,7 @@ function convert(type) {
         first_ip = first_ip.map(oct => oct.toString(typeBase[type]).padStart(padLen[type], '0'))
         last_ip = last_ip.map(oct => oct.toString(typeBase[type]).padStart(padLen[type], '0'))
 
-        box.innerHTML = `<span class="result">
+        box.innerHTML += `<span class="result">
             <span class="result-key">Class:</span> ${_class}<br>
             <span class="result-key">IP Address:</span> ${ip.join(".")}<br>
             <span class="result-key">Net Mask:</span> ${mask.join(".")}<br>
@@ -63,19 +56,49 @@ function convert(type) {
             <span class="result-key">Broadcast IP:</span> ${brd_ip.join(".")}<br>
             <span class="result-key">First IP:</span> ${first_ip.join(".")}<br>
             <span class="result-key">Last IP:</span> ${last_ip.join(".")}<br>
-        </span>
-        <button class="button" onclick="back()">Back</button>`
+        </span>`
+        if (multi && type == "hex") {
+            box.innerHTML += '<button class="button" onclick="back()">Back</button>'
+        } else if(!multi) {
+            box.innerHTML += '<button class="button" onclick="back()">Back</button>'
+        }
+        return true
     } else {
-        box.innerHTML = `<span class="result">
+        box.innerHTML += `<span class="result">
             <span class="result-key">Class:</span> ${_class}<br>
             <span class="result-key">IP Address:</span> ${ip.join(".")}<br>
             <span class="result-key">Net Mask:</span> Undefined<br>
         </span>
         <button class="button" onclick="back()">Back</button>`
+        return false
+    }
+}
+
+function convert(type) {
+    if (type == "all") {
+        document.querySelector(".line-content").classList.add("hide")
+    }
+    boxType = type
+    var box = document.getElementById(`${type}-convert`)
+    boxInner = box.innerHTML
+    Array.prototype.slice.call(document.getElementsByClassName("box")).map(_box => _box != box ? _box.classList.add("notselected") : null)
+    box.classList.add("selected")
+    var ip = document.getElementById(`${type}-ip`).value.split(".").map(oct => parseInt(oct))
+    var _class = getClass(ip)
+    box.innerHTML = ""
+    if (type == "all") {
+        Object.keys(typeBase).every(type => {    
+            return display(type, _class, ip, box, true)
+        });
+    } else {
+    display(type, _class, ip, box)
     }
 }
 
 function back() {
+    if (boxType == "all") {
+        document.querySelector(".line-content").classList.remove("hide")
+    }
     Array.prototype.slice.call(document.getElementsByClassName("notselected")).map(box => box.classList.remove("notselected"))
     var box = document.getElementById(`${boxType}-convert`)
     box.classList.remove("selected")
