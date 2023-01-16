@@ -65,7 +65,7 @@ body.light {
 }
 
 .flex-content .content .line-content.hide {
-    height: 0%;
+    height: 0px;
 }
 
 .flex-content .content .line-content .box {
