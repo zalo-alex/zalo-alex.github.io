@@ -43,7 +43,10 @@ body.change-theme .flex-content {
 	0% {
 		background-color: rgba(0, 0, 0, 0);
 	}
-	50% {
+	25% {
+		background-color: rgba(0, 0, 0, 1);
+	}
+	75% {
 		background-color: rgba(0, 0, 0, 1);
 	}
 	100% {
@@ -87,11 +90,9 @@ body.change-theme .flex-content {
 
 .flex-content .content .box.selected { 
     width: fit-content;
-    transform: scale(1.2);
 }
 
 .flex-content .content .box.notselected { 
-    transform: scale(0);
     width: 0px;
     padding: 0;
     opacity: 0;
