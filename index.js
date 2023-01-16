@@ -81,3 +81,28 @@ function back() {
     box.classList.remove("selected")
     box.innerHTML = boxInner
 }
+
+var theme = true
+
+function themeChange(){
+	if(theme) {
+		document.body.classList.add("change-theme")
+		setTimeout(() => {
+			document.body.classList.remove("dark")
+			document.body.classList.add("light")
+			setTimeout(() => {
+				document.body.classList.remove("change-theme")
+			}, 500)
+		}, 500)
+	} else {
+		document.body.classList.add("change-theme")
+		setTimeout(() => {
+			document.body.classList.add("dark")
+			document.body.classList.remove("light")
+			setTimeout(() => {
+				document.body.classList.remove("change-theme")
+			}, 500)
+		}, 500)
+	}
+	theme = !theme
+}
