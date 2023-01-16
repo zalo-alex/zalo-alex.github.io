@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    background-image: url("background.png");
+    background-image: url("background-light.jpg");
     background-size: cover;
     height: 100%;
     padding: 0;
@@ -33,25 +33,6 @@ body.dark {
 
 body.light {
 	background-image: url("background-light.jpg");
-}
-
-body.change-theme .flex-content {
-	animation: change-theme 1s;
-}
-
-@keyframes change-theme {
-	0% {
-		background-color: rgba(0, 0, 0, 0);
-	}
-	25% {
-		background-color: rgba(0, 0, 0, 1);
-	}
-	75% {
-		background-color: rgba(0, 0, 0, 1);
-	}
-	100% {
-		background-color: rgba(0, 0, 0, 0);
-	}
 }
 
 .flex-content {
@@ -73,23 +54,23 @@ body.change-theme .flex-content {
 }
 
 .flex-content .content .box {
-    width: fit-content;
+    width: 20%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0);
-    transition: 0.25s;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     padding: 2em;
     margin-inline: 2.5em;
+    transition: 0.5s;
 }
 
 .flex-content .content .box.selected { 
-    width: fit-content;
+    width: 50%;
 }
 
 .flex-content .content .box.notselected { 
@@ -97,6 +78,11 @@ body.change-theme .flex-content {
     padding: 0;
     opacity: 0;
     margin-inline: 0em;
+    transform: scale(0);
+}
+
+.flex-content .content .box.notselected * { 
+    display: none;
 }
 
 .flex-content .content .box:hover {
@@ -105,9 +91,24 @@ body.change-theme .flex-content {
 }
 
 .flex-content .content .box .result {
+    gap: 0.5em;
     font-size: 1.25em;
     line-height: 1.75em;
     margin-bottom: 1em;
+    white-space: nowrap;
+    opacity: 0;
+    animation: fade-in 0.5s;
+    animation-delay: 0.25s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .flex-content .content .box .result-key {
@@ -172,17 +173,59 @@ body.change-theme .flex-content {
 
 .flex-content footer .theme-change {
 	border-radius: 100%;
+    height: 2em;
 	background-color: white;
 	outline: none;
 	border: none;
 	aspect-ratio: 1 / 1;
-	display:flex;
-	align-items: center;
-	justify-content: center;
+    padding: 0.2em;
 }
 
-body.dark .flex-content footer .theme-change img {
-    transform: rotateZ(180deg);
+body.dark .flex-content footer .theme-change div {
+    background-image: url("moon.png");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: auto;
+	aspect-ratio: 1 / 1;
+    transition: 0.25s;
+    animation: change-theme-right 1s;
+}
+body.light .flex-content footer .theme-change div {
+    background-image: url("sun.png");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: auto;
+	aspect-ratio: 1 / 1;
+    transition: 0.25s;
+    animation: change-theme-left 1s;
+}
+
+@keyframes change-theme-right {
+	0% {
+		transform: rotateZ(0deg);
+        filter: blur(2.5px);
+	}
+    50% {
+        filter: blur(0px);
+    }
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+@keyframes change-theme-left {
+	0% {
+		transform: rotateZ(0deg);
+        filter: blur(2.5px);
+	}
+    50% {
+        filter: blur(0px);
+    }
+	100% {
+		transform: rotateZ(-360deg);
+	}
 }
 
 .flex-content footer .theme-change img {

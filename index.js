@@ -62,14 +62,14 @@ function convert(type) {
             <span class="result-key">Network IP:</span> ${net_ip.join(".")}<br>
             <span class="result-key">Broadcast IP:</span> ${brd_ip.join(".")}<br>
             <span class="result-key">First IP:</span> ${first_ip.join(".")}<br>
-            <span class="result-key">Last IP:</span> ${last_ip.join(".")}
+            <span class="result-key">Last IP:</span> ${last_ip.join(".")}<br>
         </span>
         <button class="button" onclick="back()">Back</button>`
     } else {
         box.innerHTML = `<span class="result">
             <span class="result-key">Class:</span> ${_class}<br>
             <span class="result-key">IP Address:</span> ${ip.join(".")}<br>
-            <span class="result-key">Net Mask:</span> Undefined
+            <span class="result-key">Net Mask:</span> Undefined<br>
         </span>
         <button class="button" onclick="back()">Back</button>`
     }
@@ -82,27 +82,15 @@ function back() {
     box.innerHTML = boxInner
 }
 
-var theme = true
+var theme = false
 
 function themeChange(){
 	if(theme) {
-		document.body.classList.add("change-theme")
-		setTimeout(() => {
-			document.body.classList.remove("dark")
-			document.body.classList.add("light")
-			setTimeout(() => {
-				document.body.classList.remove("change-theme")
-			}, 500)
-		}, 500)
+        document.body.classList.remove("dark")
+        document.body.classList.add("light")
 	} else {
-		document.body.classList.add("change-theme")
-		setTimeout(() => {
-			document.body.classList.add("dark")
-			document.body.classList.remove("light")
-			setTimeout(() => {
-				document.body.classList.remove("change-theme")
-			}, 500)
-		}, 500)
+        document.body.classList.add("dark")
+        document.body.classList.remove("light")
 	}
 	theme = !theme
 }
